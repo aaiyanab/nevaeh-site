@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nevaeh — Creative Branding Studio</title>
+<meta name="description" content="Nevaeh crafts intentional brands through strategy, storytelling, and timeless design. Crafted by nature, inspired by peace." />
+<link rel="icon" href="favicon.png" type="image/png" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<meta name="theme-color" content="#EFEAE0" />
+
+<!-- Social sharing. Replace the two URLs below with your live domain once deployed. -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Nevaeh — Creative Branding Studio" />
+<meta property="og:description" content="Nevaeh crafts intentional brands through strategy, storytelling, and timeless design." />
+<meta property="og:image" content="https://YOUR-DOMAIN.com/og-image.jpg" />
+<meta property="og:url" content="https://YOUR-DOMAIN.com" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+/* ============================================================
+   NEVAEH — Design tokens
+   ============================================================ */
+:root{
+  --cream:        #EFEAE0;
+  --cream-soft:   #F3EFE6;
+  --cream-card:   #EAE4D6;
+  --teal:         #2F5D59;
+  --teal-deep:    #29504D;
+  --terracotta:   #C2622F;
+  --charcoal:     #2C2823;
+  --ink:          #1F1C18;
+  --grey-text:    #5E5A54;
+  --line:         rgba(44,40,35,.14);
+  --line-light:   rgba(239,234,224,.18);
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body:    "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:    "Space Mono", "Courier New", monospace;
+
+  --max-w: 1240px;
+  --pad-x: clamp(20px, 5vw, 64px);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+section[id]{scroll-margin-top:104px;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:.001s !important; transition-duration:.001s !important;}
+}
+body{
+  font-family:var(--font-body);
+  background:var(--cream);
+  color:var(--ink);
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+
+.wrap{max-width:var(--max-w);margin:0 auto;padding-left:var(--pad-x);padding-right:var(--pad-x);}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+/* ---------- Utility type ---------- */
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:.72rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--terracotta);
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+}
+.eyebrow::before{content:"";width:34px;height:2px;background:currentColor;}
+.eyebrow.teal{color:var(--teal);}
+.display{
+  font-family:var(--font-display);
+  font-weight:500;
+  line-height:1.12;
+  letter-spacing:-.01em;
+}
+.display em{font-style:italic;font-weight:400;}
+.accent-teal{color:var(--teal);}
+.accent-terracotta{color:var(--terracotta);}
+
+/* Hand-drawn underline squiggle */
+.squiggle{position:relative;display:inline-block;}
+.squiggle svg{position:absolute;left:0;bottom:-.18em;width:100%;height:.28em;overflow:visible;}
+.squiggle svg path{fill:none;stroke:var(--terracotta);stroke-width:5;stroke-linecap:round;}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.in{opacity:1;transform:none;}
+
+/* ============================================================
+   Header
+   ============================================================ */
+.site-header{
+  position:sticky;top:0;z-index:60;
+  background:rgba(239,234,224,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.site-header .bar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;padding-top:16px;padding-bottom:16px;
+}
+.brand{display:flex;align-items:center;}
+.brand-name{
+  font-family:var(--font-display);font-size:clamp(1.3rem,2vw,1.7rem);
+  letter-spacing:.28em;line-height:1;text-transform:uppercase;
+}
+.main-nav{display:flex;gap:clamp(14px,2.4vw,34px);}
+.main-nav a{
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink);
+  padding-bottom:4px;border-bottom:2px solid transparent;
+  transition:border-color .25s, color .25s;
+}
+.main-nav a .num{color:var(--terracotta);margin-right:6px;}
+.main-nav a:hover, .main-nav a.active{border-color:var(--terracotta);}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  padding:14px 22px;border:none;cursor:pointer;
+  transition:transform .25s ease, background .25s ease, box-shadow .25s ease;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn .arrow{transition:transform .25s ease;}
+.btn:hover .arrow{transform:translate(3px,-3px);}
+.btn-teal{background:var(--teal);color:var(--cream);}
+.btn-teal:hover{background:var(--teal-deep);}
+.btn-terracotta{background:var(--terracotta);color:var(--cream);}
+.btn-outline{background:transparent;color:var(--cream);border:1px solid rgba(239,234,224,.5);}
+.nav-toggle{display:none;background:none;border:1px solid var(--line);padding:10px 12px;cursor:pointer;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.15em;}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero{position:relative;border-top:6px solid var(--terracotta);}
+.hero .wrap{
+  display:grid;grid-template-columns:1.35fr .65fr;
+  gap:clamp(32px,5vw,72px);align-items:center;
+  padding-top:clamp(48px,7vw,96px);padding-bottom:clamp(48px,7vw,96px);
+}
+.hero h1{font-size:clamp(2.7rem,6.4vw,5.4rem);}
+.hero .tagline-chip{
+  position:absolute;top:22px;right:var(--pad-x);
+  background:var(--cream-soft);border:1px solid var(--line);
+  font-family:var(--font-mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+  padding:8px 16px;transform:rotate(-1.4deg);
+  box-shadow:0 4px 14px rgba(44,40,35,.08);
+  color:var(--charcoal);
+}
+.hero p.lede{max-width:520px;color:var(--grey-text);margin-top:28px;padding-bottom:26px;border-bottom:1px solid var(--line);}
+.hero .tags{margin-top:26px;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.hero .tags::before{content:"";width:34px;height:2px;background:var(--terracotta);}
+.hero .tags .dot{color:var(--terracotta);}
+
+/* Framed brand poster */
+.poster{
+  background:#F6F2E9;
+  padding:clamp(14px,1.6vw,22px);
+  box-shadow:0 24px 60px rgba(44,40,35,.16);
+  transform:rotate(1.2deg);
+  transition:transform .6s ease;
+  width:100%;max-width:300px;
+  margin-left:auto;
+}
+.poster:hover{transform:rotate(0deg);}
+.poster img{width:100%;height:auto;}
+
+/* ============================================================
+   Marquee
+   ============================================================ */
+.marquee{background:var(--teal);color:var(--cream);overflow:hidden;border-top:4px solid var(--terracotta);}
+.marquee .track{display:flex;width:max-content;animation:scroll 28s linear infinite;}
+.marquee ul{display:flex;align-items:center;padding:18px 0;}
+.marquee li{
+  font-family:var(--font-mono);font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;
+  display:flex;align-items:center;white-space:nowrap;
+}
+.marquee li::after{content:"✦";color:var(--terracotta);margin:0 34px;font-size:.9rem;}
+@keyframes scroll{to{transform:translateX(-50%);}}
+
+/* ============================================================
+   Studio
+   ============================================================ */
+.studio{padding:clamp(64px,9vw,130px) 0;position:relative;}
+.studio .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,6vw,90px);align-items:start;}
+.collage{position:relative;}
+.collage .chip{
+  position:absolute;top:-18px;left:34px;z-index:3;
+  background:var(--cream-soft);border:1px solid var(--line);
+  font-family:var(--font-mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:8px 16px;transform:rotate(-2deg);
+  box-shadow:0 6px 16px rgba(44,40,35,.12);
+}
+.collage img{width:100%;height:auto;box-shadow:0 22px 55px rgba(44,40,35,.14);}
+.studio-text .display{font-size:clamp(1.8rem,3.4vw,2.9rem);margin:22px 0 26px;}
+.studio-text p{color:var(--grey-text);max-width:560px;}
+.pullquote{
+  margin:34px 0;background:rgba(47,93,89,.06);
+  border-left:3px solid var(--teal);
+  padding:22px 28px;
+  font-family:var(--font-display);font-style:italic;
+  font-size:clamp(1.1rem,1.8vw,1.5rem);color:var(--teal);
+}
+.mvv{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px;}
+.mvv .card{background:var(--cream-soft);border-top:3px solid var(--terracotta);padding:20px 18px;font-size:.92rem;}
+.mvv .card:nth-child(2){border-color:var(--teal);background:#E8EAE3;}
+.mvv .card:nth-child(3){border-color:#5A4632;background:#EAE3D6;}
+.mvv h4{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--terracotta);margin-bottom:10px;font-weight:400;}
+.mvv .card:nth-child(2) h4{color:var(--teal);}
+.mvv .card:nth-child(3) h4{color:#5A4632;}
+
+/* ============================================================
+   Services
+   ============================================================ */
+.services{padding:clamp(56px,8vw,110px) 0;}
+.services .brush{width:min(360px,60%);height:8px;margin:26px 0 8px;border-radius:8px;
+  background:linear-gradient(90deg,#7B958D, #B08A6A, #C99E77);opacity:.75;}
+.service-row{
+  display:grid;grid-template-columns:64px 1fr 1.2fr 40px;
+  gap:clamp(16px,3vw,44px);align-items:center;
+  padding:clamp(28px,4vw,46px) 0;border-top:1px solid var(--line);
+  transition:background .3s ease;
+}
+.service-row:last-child{border-bottom:1px solid var(--line);}
+.service-row:hover{background:rgba(47,93,89,.045);}
+.service-row .num{
+  width:48px;height:48px;display:grid;place-items:center;
+  font-family:var(--font-mono);font-size:.7rem;color:var(--cream);
+  background:var(--terracotta);
+}
+.service-row:nth-child(even) .num{background:var(--teal);}
+.service-row h3{font-family:var(--font-display);font-weight:500;font-size:clamp(1.5rem,2.8vw,2.3rem);}
+.service-row p{color:var(--grey-text);font-size:.98rem;}
+.service-row .go{color:var(--terracotta);font-size:1.1rem;transition:transform .25s;}
+.service-row:hover .go{transform:translate(4px,-4px);}
+
+/* ============================================================
+   Packages
+   ============================================================ */
+.packages{padding:clamp(56px,8vw,110px) 0;}
+.packages .head{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,5vw,80px);align-items:center;margin-bottom:clamp(36px,5vw,64px);}
+.packages .head .display{font-size:clamp(2.2rem,4.6vw,3.8rem);margin-top:18px;}
+.packages .head p{color:var(--grey-text);}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.6vw,34px);align-items:stretch;}
+.pkg{
+  background:var(--cream-soft);border-top:5px solid var(--teal);
+  padding:clamp(26px,3vw,40px) clamp(22px,2.6vw,34px);
+  display:flex;flex-direction:column;
+  box-shadow:0 14px 40px rgba(44,40,35,.08);
+}
+.pkg.dark{
+  background:var(--charcoal);color:#EDE8DD;
+  border-top:5px solid transparent;
+  border-image:linear-gradient(90deg,var(--teal), var(--terracotta)) 1;
+  transform:translateY(-14px);
+}
+.pkg.alt{border-top-color:var(--terracotta);}
+.pkg h3{font-family:var(--font-display);font-weight:500;font-size:clamp(1.6rem,2.4vw,2.1rem);}
+.pkg .desc{margin-top:12px;color:var(--grey-text);font-size:.95rem;min-height:3.2em;}
+.pkg.dark .desc{color:#C9BFAE;}
+.pkg .price-label{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:#8B857B;margin-top:26px;}
+.pkg .price{font-family:var(--font-display);font-size:clamp(2.6rem,4vw,3.6rem);color:var(--teal);line-height:1.1;}
+.pkg.dark .price, .pkg.alt .price{color:var(--terracotta);}
+.pkg hr{border:none;border-top:1px solid var(--line);margin:22px 0;}
+.pkg.dark hr{border-color:rgba(237,232,221,.18);}
+.pkg ul{display:flex;flex-direction:column;gap:14px;font-size:.95rem;flex:1;}
+.pkg li{display:flex;gap:12px;align-items:flex-start;}
+.pkg li .check{
+  flex:none;width:20px;height:20px;margin-top:2px;border-radius:50%;
+  border:1.5px solid var(--terracotta);color:var(--terracotta);
+  display:grid;place-items:center;font-size:.62rem;
+}
+.pkg li:nth-child(odd) .check{border-color:var(--teal);color:var(--teal);}
+.pkg.dark li .check{border-color:var(--terracotta);color:var(--terracotta);}
+.pkg .foot{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);}
+.pkg.dark .foot{border-color:rgba(237,232,221,.18);}
+.pkg .timeline b{display:block;font-family:var(--font-mono);font-weight:400;font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:#8B857B;margin-bottom:6px;}
+.pkg .timeline{font-size:.95rem;}
+
+/* ============================================================
+   Creative Partner + À la carte
+   ============================================================ */
+.partner{padding:clamp(48px,7vw,90px) 0 0;}
+.partner .band{
+  position:relative;background:var(--teal);color:var(--cream);
+  padding:clamp(36px,5vw,64px) clamp(26px,4vw,60px);
+  display:grid;grid-template-columns:1.4fr .6fr;gap:clamp(24px,4vw,60px);align-items:center;
+  overflow:hidden;
+}
+.partner .band::before{
+  content:"";position:absolute;inset:0;opacity:.1;pointer-events:none;
+  background:
+    radial-gradient(circle at 12% 20%, #fff 0 46px, transparent 47px),
+    radial-gradient(circle at 42% 70%, #fff 0 60px, transparent 61px),
+    radial-gradient(circle at 74% 18%, #fff 0 52px, transparent 53px),
+    radial-gradient(circle at 92% 72%, #fff 0 44px, transparent 45px);
+}
+.partner .eyebrow{color:var(--terracotta);}
+.partner h3{font-family:var(--font-display);font-weight:500;font-size:clamp(2rem,4vw,3.2rem);margin:14px 0 16px;}
+.partner p{color:#D7DBD3;max-width:620px;}
+.partner .price-side{text-align:right;position:relative;z-index:1;}
+.partner .from{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:#AFC1BB;}
+.partner .price{font-family:var(--font-display);font-size:clamp(2.6rem,4.4vw,4rem);color:var(--terracotta);line-height:1.15;}
+.partner .price span{font-family:var(--font-body);font-size:1rem;color:#D7DBD3;}
+
+.alacarte{padding:clamp(56px,8vw,100px) 0;}
+.alacarte .sub{color:var(--grey-text);margin-top:10px;}
+.rate-grid{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(28px,5vw,80px);}
+.rate{
+  display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+  padding:24px 4px;border-top:1px solid var(--line);
+}
+.rate:hover{background:rgba(194,98,47,.05);}
+.rate .name{font-size:1.05rem;font-weight:400;}
+.rate .amt{font-family:var(--font-display);font-size:1.5rem;color:var(--teal);}
+.rate:nth-child(even) .amt{color:var(--terracotta);}
+.alacarte .note{margin-top:30px;color:var(--grey-text);font-size:.92rem;border-top:1px solid var(--line);padding-top:22px;}
+
+/* ============================================================
+   Process
+   ============================================================ */
+.process{background:var(--teal);color:var(--cream);padding:clamp(64px,9vw,120px) 0;position:relative;overflow:hidden;}
+.process::before{
+  content:"";position:absolute;inset:0;opacity:.08;pointer-events:none;
+  background:
+    radial-gradient(circle at 8% 12%, #fff 0 70px, transparent 71px),
+    radial-gradient(circle at 30% 44%, #fff 0 56px, transparent 57px),
+    radial-gradient(circle at 56% 12%, #fff 0 64px, transparent 65px),
+    radial-gradient(circle at 82% 38%, #fff 0 72px, transparent 73px),
+    radial-gradient(circle at 68% 82%, #fff 0 58px, transparent 59px);
+}
+.process .eyebrow{color:var(--terracotta);}
+.process .steps{margin-top:clamp(40px,6vw,80px);display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(24px,4vw,56px);position:relative;z-index:1;}
+.process .step .num{
+  width:48px;height:48px;display:grid;place-items:center;
+  background:var(--terracotta);color:var(--cream);
+  font-family:var(--font-mono);font-size:.7rem;
+}
+.process .step h3{font-family:var(--font-display);font-weight:500;font-size:clamp(1.8rem,2.8vw,2.6rem);margin:26px 0 18px;}
+.process .step p{color:#CBD5CF;font-size:.97rem;}
+
+/* ============================================================
+   Testimonial
+   ============================================================ */
+.testimonial{padding:clamp(72px,10vw,140px) 0;text-align:center;}
+.testimonial blockquote{
+  font-family:var(--font-display);font-style:italic;font-weight:400;
+  font-size:clamp(1.5rem,3.4vw,2.6rem);line-height:1.4;
+  max-width:960px;margin:0 auto;
+}
+.testimonial cite{
+  display:inline-flex;align-items:center;gap:18px;margin-top:38px;
+  font-family:var(--font-mono);font-style:normal;font-size:.72rem;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--terracotta);
+}
+.testimonial cite::before,.testimonial cite::after{content:"";width:44px;height:2px;background:var(--terracotta);}
+
+/* ============================================================
+   Clients
+   ============================================================ */
+.clients{padding:clamp(56px,8vw,110px) 0;}
+.clients .grid{margin-top:clamp(36px,5vw,64px);display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(22px,3.4vw,44px);align-items:start;}
+.client .thumb{position:relative;aspect-ratio:1.35/1;overflow:hidden;box-shadow:0 14px 36px rgba(44,40,35,.1);}
+.client .thumb .top{position:absolute;top:0;left:0;right:0;height:6px;z-index:2;}
+.client.c1 .thumb .top{background:var(--teal);}
+.client.c2 .thumb .top{background:linear-gradient(90deg,var(--terracotta), var(--teal));}
+.client.c3 .thumb .top{background:linear-gradient(90deg,var(--teal), var(--terracotta));}
+.client .thumb .chip{
+  position:absolute;top:20px;left:20px;z-index:2;
+  background:var(--cream-soft);font-family:var(--font-mono);
+  font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:7px 12px;color:var(--terracotta);box-shadow:0 4px 12px rgba(0,0,0,.14);
+}
+.client.c1 .thumb .chip{color:var(--teal);}
+.client .thumb img{
+  position:absolute;inset:0;width:100%;height:100%;
+  transition:transform .7s ease;
+}
+.client .thumb:hover img{transform:scale(1.04);}
+.client.c1 .thumb img{object-fit:cover;object-position:center 22%;}
+.client.c2 .thumb{background:#0B0B0B;}
+.client.c2 .thumb img{object-fit:contain;padding:6%;}
+.client.c3 .thumb{background:#fff;}
+.client.c3 .thumb img{object-fit:contain;padding:5%;}
+.client .meta{margin-top:20px;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);}
+.client.c2 .meta{color:var(--terracotta);}
+.client h3{font-family:var(--font-display);font-weight:500;font-size:clamp(1.6rem,2.6vw,2.2rem);margin-top:8px;padding-bottom:16px;border-bottom:2px solid var(--teal);}
+.client.c2 h3{border-color:var(--terracotta);}
+.client.c3 h3{border-image:linear-gradient(90deg,var(--teal), #6B7A4F, var(--terracotta)) 1;border-bottom:2px solid;}
+.client h3 .client-link{display:inline-flex;align-items:baseline;gap:12px;transition:color .25s;}
+.client h3 .client-link:hover{color:var(--terracotta);}
+.client h3 .ext{font-family:var(--font-body);font-size:1rem;color:var(--terracotta);transition:transform .25s;}
+.client h3 .client-link:hover .ext{transform:translate(3px,-3px);}
+.client .sublist{margin-top:18px;display:flex;flex-direction:column;gap:10px;}
+.client .sublist li{
+  background:var(--cream-card);padding:14px 18px;font-size:.95rem;
+  border-left:3px solid var(--teal);
+}
+.client .sublist li:nth-child(2){border-color:var(--terracotta);}
+.client .sublist li:nth-child(3){border-color:#6B7A4F;}
+
+/* ============================================================
+   Contact
+   ============================================================ */
+.contact{background:#211D18;color:var(--cream);padding:clamp(72px,10vw,140px) 0;position:relative;overflow:hidden;}
+.contact::before{
+  content:"";position:absolute;inset:0;opacity:.05;pointer-events:none;
+  background:
+    radial-gradient(circle at 10% 18%, #fff 0 64px, transparent 65px),
+    radial-gradient(circle at 34% 66%, #fff 0 78px, transparent 79px),
+    radial-gradient(circle at 70% 22%, #fff 0 58px, transparent 59px),
+    radial-gradient(circle at 88% 70%, #fff 0 66px, transparent 67px);
+}
+.contact .grid{display:grid;grid-template-columns:.6fr 1.4fr;gap:clamp(28px,5vw,80px);position:relative;z-index:1;}
+.contact .eyebrow{color:var(--terracotta);background:rgba(194,98,47,.14);padding:8px 14px;}
+.contact .eyebrow::before{background:var(--terracotta);}
+.contact .side h3{font-family:var(--font-display);font-weight:500;font-size:clamp(1.7rem,2.8vw,2.4rem);margin-top:22px;}
+.contact .display{font-size:clamp(2.4rem,5.4vw,4.4rem);color:#EFEAE0;}
+.contact .display em{color:var(--terracotta);}
+.contact .email{
+  display:inline-block;margin-top:38px;
+  font-family:var(--font-display);font-size:clamp(1.3rem,2.6vw,2rem);
+  color:#EFEAE0;background:rgba(47,93,89,.55);
+  padding:6px 14px;border-bottom:1px solid rgba(239,234,224,.5);
+  transition:background .25s;
+}
+.contact .email:hover{background:rgba(47,93,89,.85);}
+.contact .facts{
+  margin-top:clamp(40px,6vw,72px);padding-top:34px;border-top:1px solid rgba(239,234,224,.14);
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:720px;
+}
+.contact .facts b{display:block;font-family:var(--font-mono);font-weight:400;font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;margin-bottom:10px;}
+.contact .facts .f1 b{color:#7FA39C;}
+.contact .facts .f2 b{color:var(--terracotta);}
+.contact .facts span{color:#BDB4A5;}
+
+/* ---------- Booking block ---------- */
+.book-block{
+  margin-top:clamp(40px,6vw,64px);max-width:760px;
+  padding:26px 30px;border:1px solid rgba(239,234,224,.18);
+  display:flex;flex-wrap:wrap;align-items:center;gap:18px 24px;
+}
+.book-block .book-copy{flex:1 1 260px;color:#BDB4A5;font-size:.98rem;margin:0;}
+.book-block .book-or{
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.24em;
+  text-transform:uppercase;color:#7A736A;
+}
+.book-block + .inquiry{margin-top:38px;}
+
+/* ---------- Inquiry form ---------- */
+.inquiry{margin-top:clamp(40px,6vw,64px);max-width:760px;}
+.inquiry .form-label{
+  font-family:var(--font-mono);font-size:.64rem;letter-spacing:.26em;
+  text-transform:uppercase;color:#7FA39C;display:block;margin-bottom:10px;
+}
+.inquiry .fields{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.inquiry .field.full{grid-column:1 / -1;}
+.inquiry input, .inquiry select, .inquiry textarea{
+  width:100%;background:transparent;color:#EFEAE0;
+  border:none;border-bottom:1px solid rgba(239,234,224,.28);
+  padding:12px 2px;font-family:var(--font-body);font-size:1rem;font-weight:300;
+  border-radius:0;transition:border-color .25s;
+}
+.inquiry textarea{resize:vertical;min-height:84px;}
+.inquiry input::placeholder, .inquiry textarea::placeholder{color:#7A736A;}
+.inquiry input:focus, .inquiry select:focus, .inquiry textarea:focus{
+  outline:none;border-bottom-color:var(--terracotta);
+}
+.inquiry input:focus-visible, .inquiry select:focus-visible,
+.inquiry textarea:focus-visible, .inquiry button:focus-visible{
+  outline:2px solid var(--terracotta);outline-offset:4px;
+}
+.inquiry select{appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%, #C2622F 50%),linear-gradient(135deg,#C2622F 50%, transparent 50%);
+  background-position:calc(100% - 14px) 22px, calc(100% - 8px) 22px;
+  background-size:6px 6px, 6px 6px;background-repeat:no-repeat;padding-right:28px;}
+.inquiry select option{background:#211D18;color:#EFEAE0;}
+.inquiry .actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:34px;}
+.inquiry .status{font-size:.9rem;color:#9FB5AE;}
+
+
+.site-footer{background:#1A1713;color:#8F887C;border-top:4px solid var(--teal);}
+.site-footer .wrap{
+  display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;
+  padding-top:28px;padding-bottom:28px;font-family:var(--font-mono);
+  font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;
+}
+.site-footer .name{color:#EFEAE0;font-family:var(--font-display);font-size:1.1rem;letter-spacing:.12em;text-transform:none;}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 1024px){
+  .main-nav{display:none;}
+  .main-nav.open{
+    display:flex;flex-direction:column;position:absolute;left:0;right:0;top:100%;
+    background:var(--cream-soft);border-bottom:1px solid var(--line);
+    padding:22px var(--pad-x);gap:18px;
+  }
+  .nav-toggle{display:block;}
+  .hero .wrap{grid-template-columns:1fr;}
+  .hero .tagline-chip{position:static;display:inline-block;margin:20px var(--pad-x) 0;}
+  .studio .grid{grid-template-columns:1fr;}
+  .service-row{grid-template-columns:48px 1fr 40px;grid-template-areas:"num title go" "num desc go";row-gap:8px;}
+  .service-row .num{grid-area:num;}
+  .service-row h3{grid-area:title;}
+  .service-row p{grid-area:desc;}
+  .service-row .go{grid-area:go;}
+  .pkg-grid{grid-template-columns:1fr;max-width:560px;margin:0 auto;}
+  .pkg.dark{transform:none;}
+  .packages .head{grid-template-columns:1fr;}
+  .partner .band{grid-template-columns:1fr;}
+  .partner .price-side{text-align:left;}
+  .process .steps{grid-template-columns:1fr 1fr;}
+  .clients .grid{grid-template-columns:1fr;max-width:560px;}
+  .contact .grid{grid-template-columns:1fr;}
+}
+@media (max-width: 560px){
+  .rate-grid{grid-template-columns:1fr;}
+  .process .steps{grid-template-columns:1fr;}
+  .mvv{grid-template-columns:1fr;}
+  .contact .facts{grid-template-columns:1fr;}
+  .inquiry .fields{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="#home">
+      <span class="brand-name">Nevaeh</span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#home"><span class="num">00</span>Home</a>
+      <a href="#studio"><span class="num">01</span>Studio</a>
+      <a href="#services"><span class="num">02</span>Services</a>
+      <a href="#portfolio"><span class="num">03</span>Portfolio</a>
+      <a href="#process"><span class="num">04</span>Process</a>
+      <a href="#contact"><span class="num">05</span>Contact</a>
+    </nav>
+    <div style="display:flex;gap:12px;align-items:center;">
+      <a class="btn btn-teal js-book" href="#contact">Book a Discovery Session <span class="arrow">↗</span></a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav">Menu</button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <span class="tagline-chip">Crafted by nature, inspired by peace</span>
+  <div class="wrap">
+    <div class="reveal">
+      <h1 class="display">
+        To give voice<br>to those who<br>
+        <em class="accent-teal squiggle">dare to stand out.
+          <svg viewBox="0 0 400 14" preserveAspectRatio="none" aria-hidden="true"><path d="M4 9 C 60 3, 120 13, 190 8 S 330 4, 396 9"/></svg>
+        </em>
+      </h1>
+      <p class="lede">Nevaeh crafts intentional brands through strategy, storytelling, and timeless design. Inspired by nature and guided by purpose — we create identities that feel as meaningful as they are memorable.</p>
+      <div class="tags">Strategy <span class="dot">·</span> Storytelling <span class="dot">·</span> Intentional Design</div>
+    </div>
+
+    <div class="poster reveal">
+      <img src="images/hero-logo.jpg" alt="Nevaeh logo — a stone archway framing a tropical cove, with the wordmark Nevaeh and the line crafted by nature, inspired by peace." />
+    </div>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <ul>
+      <li>Digital Experiences</li><li>Brand Strategy</li><li>Visual Identity</li>
+      <li>Storytelling</li><li>Packaging Design</li><li>Creative Direction</li>
+    </ul>
+    <ul>
+      <li>Digital Experiences</li><li>Brand Strategy</li><li>Visual Identity</li>
+      <li>Storytelling</li><li>Packaging Design</li><li>Creative Direction</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ================= STUDIO ================= -->
+<section class="studio" id="studio">
+  <div class="wrap grid">
+    <div class="collage reveal">
+      <img loading="lazy" decoding="async" src="images/studio-collage.jpg" alt="Nevaeh brand board — logo variations, a mood board of stone, foliage and water, and the studio colour palette. Our own brand, crafted with intention." />
+    </div>
+    <div class="studio-text reveal">
+      <span class="eyebrow">[00] The Studio</span>
+      <h2 class="display">To become a nationally recognized creative studio that transforms ideas into iconic brands through strategy, storytelling, and <em class="accent-teal">intentional design.</em></h2>
+      <p>We offer branding and creative services that help businesses curate unique identities they can capitalize on — built on strategy, storytelling, and intentional design.</p>
+      <div class="pullquote">"Inspired by nature, guided by purpose."</div>
+      <div class="mvv">
+        <div class="card"><h4>Mission</h4>Give voice to those who dare to stand out</div>
+        <div class="card"><h4>Values</h4>Innovation · Purpose · Collaboration</div>
+        <div class="card"><h4>Vision</h4>Nationally recognized · Iconic brands</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="services" id="services">
+  <div class="wrap">
+    <span class="eyebrow reveal">[02] What We Do</span>
+    <div class="brush reveal" aria-hidden="true"></div>
+    <div class="reveal">
+      <div class="service-row">
+        <span class="num">01</span>
+        <h3>Brand Strategy</h3>
+        <p>Discovery, positioning, messaging, and the strategic foundation that gives your brand its voice.</p>
+        <span class="go" aria-hidden="true">↗</span>
+      </div>
+      <div class="service-row">
+        <span class="num">02</span>
+        <h3>Brand Identity</h3>
+        <p>Logo systems, color, typography, and guidelines — a visual language built to outlast trends.</p>
+        <span class="go" aria-hidden="true">↗</span>
+      </div>
+      <div class="service-row">
+        <span class="num">03</span>
+        <h3>Creative Direction</h3>
+        <p>Mood boards, art direction, and photoshoot planning that shape how your brand is seen and felt.</p>
+        <span class="go" aria-hidden="true">↗</span>
+      </div>
+      <div class="service-row">
+        <span class="num">04</span>
+        <h3>Digital Experiences</h3>
+        <p>Websites, social systems, and digital brand experiences that carry your identity seamlessly across every screen.</p>
+        <span class="go" aria-hidden="true">↗</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PACKAGES ================= -->
+<section class="packages" id="packages">
+  <div class="wrap">
+    <div class="head reveal">
+      <div>
+        <span class="eyebrow">Signature Packages</span>
+        <h2 class="display">Built for where<br><em class="accent-teal">you are right now.</em></h2>
+      </div>
+      <p>Every project is customized to your goals. Choose a signature package or begin with a single service and expand when you are ready.</p>
+    </div>
+
+    <div class="pkg-grid">
+      <article class="pkg reveal">
+        <h3>The Foundation</h3>
+        <p class="desc">For new businesses ready to establish a professional, cohesive brand.</p>
+        <p class="price-label">Starting at</p>
+        <p class="price">$200</p>
+        <hr>
+        <ul>
+          <li><span class="check">✓</span>Brand Discovery Workshop</li>
+          <li><span class="check">✓</span>Brand Strategy &amp; Positioning</li>
+          <li><span class="check">✓</span>Mission, Vision &amp; Values</li>
+          <li><span class="check">✓</span>Messaging</li>
+          <li><span class="check">✓</span>Logo Suite</li>
+          <li><span class="check">✓</span>Color &amp; Typography</li>
+          <li><span class="check">✓</span>Brand Guidelines</li>
+        </ul>
+        <div class="foot">
+          <div class="timeline"><b>Timeline</b>3–5 weeks</div>
+        </div>
+      </article>
+
+      <article class="pkg dark reveal">
+        <h3>The Brand Launch</h3>
+        <p class="desc">Everything needed to confidently launch your business.</p>
+        <p class="price-label">Starting at</p>
+        <p class="price">$350</p>
+        <hr>
+        <ul>
+          <li><span class="check">✓</span>Everything in Foundation</li>
+          <li><span class="check">✓</span>Website Design (5 pages)</li>
+          <li><span class="check">✓</span>Social Media Starter Kit</li>
+          <li><span class="check">✓</span>Business Card Design</li>
+          <li><span class="check">✓</span>Email Signature</li>
+          <li><span class="check">✓</span>Launch Graphics</li>
+          <li><span class="check">✓</span>Brand Photography Direction</li>
+        </ul>
+        <div class="foot">
+          <div class="timeline"><b>Timeline</b>6–8 weeks</div>
+        </div>
+      </article>
+
+      <article class="pkg alt reveal">
+        <h3>The Signature Experience</h3>
+        <p class="desc">A complete brand experience for businesses ready to grow.</p>
+        <p class="price-label">Starting at</p>
+        <p class="price">$550</p>
+        <hr>
+        <ul>
+          <li><span class="check">✓</span>Brand Strategy</li>
+          <li><span class="check">✓</span>Full Brand Identity</li>
+          <li><span class="check">✓</span>Website</li>
+          <li><span class="check">✓</span>Packaging Design</li>
+          <li><span class="check">✓</span>Marketing Collateral</li>
+          <li><span class="check">✓</span>Social Templates</li>
+          <li><span class="check">✓</span>Creative Direction</li>
+          <li><span class="check">✓</span>Launch Campaign Strategy</li>
+          <li><span class="check">✓</span>One Month of Creative Support</li>
+        </ul>
+        <div class="foot">
+          <div class="timeline"><b>Timeline</b>Tailored</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CREATIVE PARTNER ================= -->
+<section class="partner">
+  <div class="wrap">
+    <div class="band reveal">
+      <div>
+        <span class="eyebrow">Ongoing Partnership</span>
+        <h3>The Creative Partner</h3>
+        <p>For businesses that need an ongoing creative team — monthly strategy, design requests, campaign planning, and priority support.</p>
+      </div>
+      <div class="price-side">
+        <p class="from">From</p>
+        <p class="price">$1,500<span>/mo</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= À LA CARTE ================= -->
+<section class="alacarte">
+  <div class="wrap">
+    <span class="eyebrow teal reveal">À La Carte Services</span>
+    <p class="sub reveal">Sometimes you just need one thing.</p>
+    <div class="rate-grid reveal">
+      <div class="rate"><span class="name">Brand Strategy</span><span class="amt">$300</span></div>
+      <div class="rate"><span class="name">Brand Identity</span><span class="amt">$200</span></div>
+      <div class="rate"><span class="name">Website Design</span><span class="amt">$450</span></div>
+      <div class="rate"><span class="name">Creative Direction</span><span class="amt">$350</span></div>
+      <div class="rate"><span class="name">Packaging Design</span><span class="amt">$100</span></div>
+      <div class="rate"><span class="name">Brand Photography</span><span class="amt">$500</span></div>
+      <div class="rate"><span class="name">Marketing Collateral</span><span class="amt">$200</span></div>
+    </div>
+    <p class="note reveal">Flexible payment plans available for projects over $2,000. Every project is customized to your goals.</p>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="process" id="process">
+  <div class="wrap">
+    <span class="eyebrow reveal">[03] How We Work</span>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="num">01</span>
+        <h3>Discover</h3>
+        <p>We learn about your business, audience, goals, and vision.</p>
+      </div>
+      <div class="step reveal">
+        <span class="num">02</span>
+        <h3>Define</h3>
+        <p>We clarify your strategy, positioning, and messaging.</p>
+      </div>
+      <div class="step reveal">
+        <span class="num">03</span>
+        <h3>Design</h3>
+        <p>We create your visual identity and creative direction — typography, interval, and weight arranged with immense precision.</p>
+      </div>
+      <div class="step reveal">
+        <span class="num">04</span>
+        <h3>Develop</h3>
+        <p>We bring your brand to life across every touchpoint — delivering the assets, systems, and guidance to launch with confidence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIAL ================= -->
+<section class="testimonial">
+  <div class="wrap reveal">
+    <blockquote>"Nevaeh has done a great job of helping me build my luxury limousine business — from logo design, brand photoshoots, and help with acquiring and booking clients!"</blockquote>
+    <cite>Elite Performance Limousine</cite>
+  </div>
+</section>
+
+<!-- ================= CLIENTS ================= -->
+<section class="clients" id="portfolio">
+  <div class="wrap">
+    <span class="eyebrow teal reveal">[04] Our Clients</span>
+    <div class="grid">
+      <article class="client c1 reveal">
+        <div class="thumb"><span class="top"></span><span class="chip">Real Estate</span><img loading="lazy" decoding="async" src="images/client-austin.jpg" alt="Brand portrait for SoldbyAustinB" /></div>
+        <p class="meta">01 — Real Estate</p>
+        <h3><a class="client-link" href="https://www.instagram.com/soldbyaustinb?igsh=MWI4YjZpMHRnNGNqeA==" target="_blank" rel="noopener">SoldbyAustinB <span class="ext">↗</span></a></h3>
+      </article>
+      <article class="client c2 reveal">
+        <div class="thumb"><span class="top"></span><span class="chip">Luxury Transport</span><img loading="lazy" decoding="async" src="images/client-elite.jpg" alt="Elite Performance Limousines logo" /></div>
+        <p class="meta">02 — Transportation</p>
+        <h3>Elite Performance Limousine</h3>
+      </article>
+      <article class="client c3 reveal">
+        <div class="thumb"><span class="top"></span><span class="chip">Pet Wellness</span><img loading="lazy" decoding="async" src="images/client-paws.jpg" alt="Heavenly Paws Pet Clubs logo — Find your pet people, wherever you are." /></div>
+        <p class="meta">03 — Pet Wellness</p>
+        <h3><a class="client-link" href="https://heavenlypawspets.com/" target="_blank" rel="noopener">Heavenly Paws <span class="ext">↗</span></a></h3>
+        <ul class="sublist">
+          <li>Madison Pet Club</li>
+          <li>Heavenly Paws Treats</li>
+          <li>Heavenly Paws Services</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap grid">
+    <div class="side reveal">
+      <span class="eyebrow">[05] Begin</span>
+      <h3>Contact Us</h3>
+    </div>
+    <div class="reveal">
+      <h2 class="display">Every brand worth building starts with <em>a conversation.</em></h2>
+      <a class="email" href="mailto:hello@nevaeh.studio">hello@nevaeh.studio</a>
+      <div class="facts">
+        <div class="f1"><b>Based in</b><span>United States</span></div>
+        <div class="f2"><b>Response time</b><span>Within 48 hours</span></div>
+      </div>
+
+      <div class="book-block" id="bookBlock" hidden>
+        <p class="book-copy">Rather talk it through? Grab a 30-minute discovery session at a time that suits you.</p>
+        <a class="btn btn-teal js-book" href="#">Book a discovery session <span class="arrow">↗</span></a>
+        <span class="book-or">or send the details below</span>
+      </div>
+
+      <form class="inquiry" id="inquiryForm" novalidate>
+        <span class="form-label">Tell us about your project</span>
+        <input type="hidden" name="_subject" id="f-subject" value="New inquiry from nevaeh.studio" />
+        <div class="fields">
+          <div class="field">
+            <label class="sr-only" for="f-name">Your name or business name</label>
+            <input id="f-name" name="name" type="text" required placeholder="Your name or business name" />
+          </div>
+          <div class="field">
+            <label class="sr-only" for="f-phone">Phone number</label>
+            <input id="f-phone" name="phone" type="tel" required placeholder="Phone number" />
+          </div>
+          <div class="field">
+            <label class="sr-only" for="f-email">Email address</label>
+            <input id="f-email" name="email" type="email" required placeholder="Email address" />
+          </div>
+          <div class="field">
+            <label class="sr-only" for="f-service">Service you're inquiring about</label>
+            <select id="f-service" name="service" required>
+              <option value="" disabled selected>Service you're inquiring about</option>
+              <optgroup label="Signature packages">
+                <option>The Foundation — from $200</option>
+                <option>The Brand Launch — from $350</option>
+                <option>The Signature Experience — from $550</option>
+                <option>The Creative Partner — from $1,500/mo</option>
+              </optgroup>
+              <optgroup label="Single services">
+                <option>Brand Strategy</option>
+                <option>Brand Identity</option>
+                <option>Creative Direction</option>
+                <option>Digital Experiences</option>
+                <option>Website Design</option>
+                <option>Packaging Design</option>
+                <option>Brand Photography</option>
+                <option>Marketing Collateral</option>
+              </optgroup>
+              <option>Not sure yet — help me choose</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label class="sr-only" for="f-notes">Anything else we should know</label>
+            <textarea id="f-notes" name="notes" placeholder="Anything else we should know (optional)"></textarea>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-terracotta" type="submit">Send inquiry <span class="arrow">↗</span></button>
+          <span class="status" id="formStatus" role="status"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="wrap">
+    <span class="name">Nevaeh</span>
+    <span>© <span id="year"></span> Nevaeh Studio</span>
+  </div>
+</footer>
+
+<script>
+// Mobile nav
+const toggle = document.getElementById('navToggle');
+const nav = document.getElementById('mainNav');
+toggle.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', open);
+});
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+}));
+
+// Scroll reveal
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Active nav highlighting
+const sections = [...document.querySelectorAll('section[id]')];
+const links = [...document.querySelectorAll('.main-nav a')];
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => spy.observe(s));
+
+// ─────────────────────────────────────────────────────────────
+// BOOKING LINK
+// Paste your Calendly / Cal.com / Google scheduling URL between the quotes.
+// Example: 'https://calendly.com/nevaeh/discovery'
+// While it's empty, the "Book a discovery session" buttons scroll to the form
+// instead, and the booking box above the form stays hidden.
+const BOOKING_URL = 'https://calendar.app.google/zzdAJYxv76cELYNc8';
+// ─────────────────────────────────────────────────────────────
+document.querySelectorAll('.js-book').forEach(el => {
+  if (BOOKING_URL) {
+    el.href = BOOKING_URL;
+    el.target = '_blank';
+    el.rel = 'noopener';
+  } else {
+    el.href = '#contact';
+  }
+});
+if (BOOKING_URL) document.getElementById('bookBlock').hidden = false;
+
+// Inquiry form
+// ─────────────────────────────────────────────────────────────
+// TO RECEIVE INQUIRIES IN YOUR INBOX:
+// Paste your Formspree form ID between the quotes below, e.g. 'xdkozqvp'
+// (Formspree dashboard → your form → Integration → the code after /f/)
+// Leave it empty and the form falls back to opening the visitor's email app.
+const FORMSPREE_ID = 'mgogdove';
+// ─────────────────────────────────────────────────────────────
+const form = document.getElementById('inquiryForm');
+const status = document.getElementById('formStatus');
+const submitBtn = form.querySelector('button[type="submit"]');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const required = ['f-name','f-phone','f-email','f-service'].map(id => document.getElementById(id));
+  const missing = required.find(el => !el.value.trim());
+  if (missing) {
+    status.textContent = 'Please fill in every field above.';
+    missing.focus();
+    return;
+  }
+  const email = document.getElementById('f-email');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+    status.textContent = 'That email address looks incomplete.';
+    email.focus();
+    return;
+  }
+
+  document.getElementById('f-subject').value =
+    'New inquiry — ' + document.getElementById('f-service').value;
+  const data = new FormData(form);
+  const d = Object.fromEntries(data.entries());
+
+  if (FORMSPREE_ID) {
+    submitBtn.disabled = true;
+    status.textContent = 'Sending…';
+    try {
+      const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        form.reset();
+        status.textContent = 'Thank you — we\u2019ll reply within 48 hours.';
+      } else {
+        status.textContent = 'That didn\u2019t send. Please email hello@nevaeh.studio directly.';
+      }
+    } catch {
+      status.textContent = 'That didn\u2019t send. Please email hello@nevaeh.studio directly.';
+    }
+    submitBtn.disabled = false;
+    return;
+  }
+
+  const body = [
+    'Name / business: ' + d.name,
+    'Phone: ' + d.phone,
+    'Email: ' + d.email,
+    'Service: ' + d.service,
+    '',
+    d.notes || ''
+  ].join('\n');
+  window.location.href = 'mailto:hello@nevaeh.studio'
+    + '?subject=' + encodeURIComponent('New inquiry — ' + d.service)
+    + '&body=' + encodeURIComponent(body);
+  status.textContent = 'Opening your email app to send this inquiry.';
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
